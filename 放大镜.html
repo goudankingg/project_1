@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .demo{
+        width: 300px;
+        height: 400px;
+        background-color: #888;
+        overflow: hidden;
+        float: left;
+    }
+    .demo img{
+        position: relative;
+        width: 300px;
+        height: 400px;
+        float: left;
+    }
+    .mask{
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 140px;
+        height: 140px;
+        background-color: yellow;
+        opacity: 0.5;
+        display: none;
+        z-index: 11;
+        cursor: move;
+    }
+    .display{
+        display: none;
+        position: absolute;
+        left: 320px;
+        top: 0;
+        width: 500px;
+        height: 500px;
+        background-color: pink;
+        border: 1px solid #ccc;
+        overflow: hidden;
+    }
+    .display img{
+        /* display: none; */
+        position: absolute;
+        top: 0;
+        left: 0px;
+        width: 800px;
+        height: 1000px;
+    }
+</style>
+<body>
+    <div class="demo"><img src="img/C789C1A8BC9B88DE4541D1A92D788887.jpg" alt="" >
+        <div class="mask"></div>
+    </div>
+    <div class="display">
+            <img src="img/C789C1A8BC9B88DE4541D1A92D788887.jpg" alt="" >
+        </div>
+    <script>
+        var demo=document.querySelector('.demo');
+        var mask=document.querySelector('.mask');
+        var display=document.querySelector('.display');
+        var img=document.querySelectorAll('img');
+        demo.addEventListener('mouseover',function(e){
+            mask.style.display='block';
+           display.style.display='block';
+        })
+        demo.addEventListener('mouseout',function(e){
+            mask.style.display='none';
+            display.style.display='none';
+        })
+        demo.addEventListener('mousemove',function(e){
+            var x=e.pageX-demo.offsetLeft;
+            var y=e.pageY-demo.offsetTop;
+            var maskx=x-70;
+            var masky=y-70;
+            if(maskx<0){
+                maskx=0;
+            }
+            else if(maskx>160){
+                maskx=160;
+            }
+            if(masky<0){
+                masky=0;
+            }
+            else if(masky>260){
+                masky=260;
+            }
+            mask.style.left=maskx+'px';
+            mask.style.top=masky+'px';
+            var displayx=maskx*300/160;
+            var displayy=masky*500/260;
+            img[1].style.left=-displayx+'px';
+            img[1].style.top=-displayy+'px';
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 500px;
+            height: 300px;
+            background-color: pink;
+        }
+    </style>
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        var mychart=echarts.init(document.querySelector('.box'));
+        var option = {
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    top: '5%',
+    left: 'center'
+  },
+  series: [
+    {
+      name: '游戏名称：',
+      type: 'pie',
+      radius: ['40%', '70%'],
+      avoidLabelOverlap: false,
+      label: {
+        show: false,
+        position: 'center'
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: '20',
+          fontWeight: 'bold'
+        }
+      },
+      labelLine: {
+        show: false
+      },
+      data: [
+        { value: 2048, name: '英雄联盟' },
+        { value: 735, name: '刺激战场' },
+        { value: 580, name: '王者荣耀' },
+        { value: 1484, name: '4399弹弹堂' },
+        { value: 300, name: '造梦西游OL' }
+      ]
+    }
+  ]
+};
+      mychart.setOption(option);
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    li{
+        list-style: none;
+    }
+</style>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>吴老七八嘎呀路</li>
+    </ul>
+    <script>
+        var ul=document.querySelector('ul');
+        var li=document.querySelectorAll('li');
+        ul.addEventListener('mouseover',function(e){
+           // alert('aa');
+           for (let i = 0; i < li.length; i++) {
+               li[i].style.backgroundColor='';
+               
+           }
+            e.target.style.backgroundColor='pink';
+        })
+        ul.addEventListener('mouseout',function(e){
+            //li.style.backgroundColor='';
+            e.target.style.backgroundColor='';
+        })
+        ul.addEventListener('contextmenu',function(e){//鼠标右击无效
+            e.preventDefault();
+        })
+        ul.addEventListener('selectstart',function(e){//无法选中文字
+            e.preventDefault();
+        })
+    </script>
+</body>
+</html>

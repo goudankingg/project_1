@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .tab_list li{
+		float: left;
+		width: 100px;
+		height: 50px;
+		cursor: pointer;
+		margin: 10px;
+		text-align: center;
+	}
+	.current{
+		background-color:red;
+		color: aliceblue;
+	}
+	.item{
+		display: none;
+	}
+</style>
+<body>
+	<div class="tab_list">
+		<ul>
+			<li class="current">111</li>
+			<li>222</li>
+			<li>333</li>
+		</ul>
+	</div>
+	<div class="tab_con">
+		<div class="item">666</div>
+		<div class="item">777</div>
+		<div class="item">888</div>
+	</div>
+	<script>
+		var tab=document.querySelector('.tab_list');
+		var tabl=tab.querySelectorAll('li');
+        var items=document.getElementsByClassName('item');
+		for(i=0;i<tabl.length;i++){
+            tabl[i].setAttribute('index',i);
+			tabl[i].onclick=function(){
+				for (let i = 0; i < tabl.length; i++) {
+					tabl[i].className='';
+				}
+				this.className='current';
+                var index=this.getAttribute('index');
+                for (let i = 0; i < items.length; i++) {
+                    items[i].style.display='none';
+                }
+                items[index].style.display='block'; 
+            }
+		}
+	</script>		
+</body>
+</html>

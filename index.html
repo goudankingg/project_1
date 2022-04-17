@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" name="傅萌" />
+	<title>登录界面</title>
+	<link href="img/favicon.ico" rel="shortcut icon" />
+	<script src="https://unpkg.com/vue@next"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+	/* .container-fluid {
+		background-color: $yellow-100;
+	} */
+	.inp{
+		border: #000;
+	}
+	.inp:focus{
+		background-color: pink;
+	}
+	.frist a{
+		text-align: center;
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+		background-color:#000;
+	}
+	body{
+		background: url(img/49DFC79AB069D3B928D8A434C86DE592.jpg) no-repeat center top fixed;
+	}
+	.secend{
+		width: 200px;
+		height: 200px;
+		/* background-color: #000; */
+		background:rgba(0, 0, 0, 0.3);
+	}
+	.secend input{
+
+		width: 300px;
+		border-bottom: 1px #000;
+		outline: none;
+	}
+	.bg{
+		background-color: aquamarine;
+	}
+	.bg1{
+		background-color:none;
+	}
+	.tab_list li{
+		float: left;
+		width: 100px;
+		height: 50px;
+		
+		margin: 10px;
+		text-align: center;
+	}
+	.current{
+		background-color:red;
+		color: aliceblue;
+	}
+	.item{
+		display: none;
+	}
+</style>
+<body>
+	<div class="tab_list">
+		<ul>
+			<li class="current">111</li>
+			<li>222</li>
+			<li>333</li>
+		</ul>
+	</div>
+	<div class="tab_con">
+		<div class="item">666</div>
+		<div class="item">777</div>
+		<div class="item">888</div>
+	</div>
+	<script>
+		var tab=document.querySelector('.tab_list');
+		var tabl=tab.querySelectorAll('li');
+		var tab_con=document.querySelector('tab_con');
+		var tabc=tab_con.querySelectorAll('div');
+		for(i=0;i<tabl.length;i++){
+			tabl[i].onclick=function(){
+				for (let i = 0; i < tabl.length; i++) {
+					tabl[i].className='';
+				}
+				this.className='current';
+				for (let i = 0; i < tabc.length; i++) {
+					tabc.setAttribute('index',i);
+				}}
+		}
+	</script>		
+</body>
+	 <table>
+		<thead>
+			<tr>
+				<th>111</th>
+				<th>222</th>
+				<th>333</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>444</td>
+				<td>555</td>
+				<td>666</td>
+			</tr>
+			<tr>
+				<td>777</td>
+				<td>888</td>
+				<td>999</td>
+			</tr>
+		</tbody>
+	</table>
+	 <table>
+		<thead>
+			<tr>
+				<th>全选<input type="checkbox" name="" id="all"></th>
+			</tr>
+		</thead>
+		<tbody id="c1">
+			<tr>
+				<th><input type="checkbox" name="" ></th>
+			</tr>
+			<tr>
+				<th><input type="checkbox" name="" ></th>
+			</tr>
+		</tbody>
+	</table>
+	<div class="frist" id="aa">
+		<input type="text" class="inp">
+		<input type="text" class="inp">
+		<a href="#" >666</a>
+	</div>
+	<div class="secend">
+		<input type="password" id="pwd">
+		<button id="btn">点击变换</button>
+		<button id="btn1">点击变换</button>
+		<input type="text" placeholder="77" id="66">
+		<input type="text" value="66"  id="66">
+		 <img src="img/19A977B38FB20A122BCECEA5EB9E0C41.jpg" alt="" width="100px" height="100px"> 
+	</div>
+	 <script>
+		var div=document.querySelector("div");
+		console.log(div.getAttribute('id'));
+		var all=document.getElementById("all");
+		var all_c=document.getElementById("c1").getElementsByTagName("input");
+		all.onclick=function(){
+			// console.log(this.checked);
+			for(var i=0;i<all_c.length;i++){
+				all_c[i].checked=this.checked;
+			}
+		}
+		一般方法
+	for (let i = 0; i < all_c.length; i++) {
+		all_c[i].onclick=function(){
+			flag=true;
+			for (let i = 0; i < all_c.length; i++) {
+				if (!all_c[i].checked) {
+					flag=false;
+					break;
+				}
+			}
+			all.checked=flag;
+		}
+	}
+	// 	自己方法
+	// for (let i = 0; i < all_c.length; i++) {
+	// 	all_c[i].onclick=function(){
+	// 		for (let i = 0; i < all_c.length; i++) {
+	// 			if (!all_c[i].checked) {
+	// 				all.checked=false;
+	// 				break;
+	// 			}else{
+	// 				all.checked=true;
+	// 			}
+	// 		}
+	// 	}
+	// }
+
+
+		var tbo=document.querySelector("tbody").querySelectorAll("tr");
+		//排他思想
+		for (i=0;i<tbo.length;i++) {
+			for(j=0;j<tbo.length;j++){
+				tbo[j].onmouseout=function(){
+					this.className="";
+				}
+			}
+			tbo[i].onmouseover=function(){
+				this.className="bg";
+			}
+		}
+		一般思想
+		for(i=0;i<tbo.length;i++){
+			tbo[i].onmouseover=function(){
+				this.className="bg" ;
+			}
+			tbo[i].onmouseout=function(){
+				this.className="" ;
+			}
+		}
+
+
+		var name=document.getElementById('aa');
+		var age=document.getElementsByTagName('a');
+		var ph=document.getElementById('66');
+		ph.onfocus=function(){
+			this.placeholder="";
+			// this.Placeholder="";
+		}
+		ph.onblur=function(){
+			if(this.value==='&nbsp'){
+				this.placeholder="88";
+			}
+			// this.placeholder="66";
+		}
+		
+			var flag=1;
+			if(flag==1){
+				ph.style.placeholder="66";
+				flag=0;
+			}
+			else{
+				ph.style.placeholder="";
+				flag=1;
+			}
+		
+		console.log(age);
+		console.log(name);
+		console.log(typeof name);
+		var pwd=document.getElementById("pwd");
+		var btn=document.getElementById("btn");
+		// var btn1=document.getElementById("btn1");
+		var flag=0;
+		btn.onclick=function(){
+			if(flag==0){
+				pwd.type='text';
+				flag=1;
+			}
+			else{
+				pwd.type='password';
+				flag=0;
+			}
+			
+		}
+	</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="container-fluid bg-primary pt-5 border rounded">
+		<h1>我的第一个 <abbr title="Bootstrap">Bootstrap</abbr> 页面</h1>
+		<p>这是一些文本</p>
+	</div>
+	<div class="container-fluid text-white-50 pt-5 bg-black border">
+		<h1>我的第一个 <mark>Bootstrap 页面</mark></h1>
+		<p>这是<kbd>一些</kbd>文本</p>
+	</div>
+	<div class="container-fluid ">
+		<h1>我的第一个
+			<blockquote class="blockquote">
+				Bootstrap
+				<footer class="blockquote-footer text-white pt-5">
+					页面
+				</footer>
+			</blockquote>
+		</h1>
+		<p>这<code>是</code>一些<code>文本</code></p>
+		<dl>
+			<dt>Coffee</dt>
+			<dd>- black hot drink</dd>
+			<dt>Milk</dt>
+			<dd>- white cold drink</dd>
+		</dl>
+	</div>
+	<div class="container mt-3 table-responsive-sm">
+		<table class="table table-striped table-borderless table-hover table-dark table-striped">
+			<thead>
+				<tr>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Email</th>
+					<th>Age</th>
+					<th>City</th>
+					<th>Country</th>
+					<th>Sex</th>
+					<th>Example</th>
+					<th>Example</th>
+					<th>Example</th>
+					<th>Example</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table-success">
+					<td>John</td>
+					<td>Doe</td>
+					<td>john@example.com</td>
+				</tr>
+				<tr class="table-danger">
+					<td>Mary</td>
+					<td>Moe</td>
+					<td>mary@example.com</td>
+				</tr>
+				<tr class="table-info">
+					<td>July</td>
+					<td>Dooley</td>
+					<td>july@example.com</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="alert alert-dismissible alert-success container sm fade show">
+		<button type="button" class="btn-close " data-bs-dismiss="alert"></button>
+		 <button type="button" class="btn-open" data-bs-dismiss="alert"></button> 
+		<strong>成功</strong>指定操作成功提示信息。
+		<button class="btn btn-primary active">
+			<span class="spinner-border spinner-border-sm"></span>按钮1
+		</button>
+		<button class="btn btn-primary active">
+			<span class="spinner-grow spinner-grow-sm"></span>
+			按钮2
+		</button>
+		<div class="btn-group">
+			<button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" type="button">按钮</button>
+			<ul class="dropdown-menu">
+				<li><a class="dropdown-item" href="#">Tablet</a></li>
+				<li><a class="dropdown-item" href="#">Smartphone</a></li>
+			</ul>
+		</div>
+		<button class="btn btn-primary disabled">
+			<span class="spinner-border spinner-border-sm"></span>
+		</button>
+	</div>
+	<div class="dropup">
+		<button type="button" class="btn btn-primary dropdown-toggle " data-bs-toggle="dropdown">
+			下拉菜单按钮
+		</button>
+		<div class="dropdown-menu">
+			<p class="dropdown-header">无敌</p>
+			<a class="dropdown-item" href="#">链接 1</a>
+			<hr class="dropdown-divider">
+			<a class="dropdown-item" href="#">链接 2</a>
+			<hr class="dropdown-divider">
+			<a class="dropdown-item" href="#">链接 3</a>
+		</div>
+		<div>
+			<button type="button" class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#1">折叠</button>
+			<div class="collapse show" id="1">
+				这是折叠的内容！这是折叠的内容！ 这是折叠的内容！这是折叠的内容！ 这是折叠的内容！这是折叠的内容！ 这是折叠的内容！这是折叠的内容！
+			</div>
+		</div>
+	</div>
+	<div id="accordion">
+		<div class="card">
+			<div class="card-header">
+				<a class="btn" href="#one" data-bs-toggle="collapse">一</a>
+			</div>
+			<div id="one" class="collapse" data-bs-parent="#accordion">
+				<div class="card-body">
+					<p>标题一的内容!</p>
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-header">
+				<a class="btn" href="#two" data-bs-toggle="collapse">二</a>
+			</div>
+			<div id="two" class="collapse" data-bs-parent="#accordion">
+				<div class="card-body">
+					<p>标题二的内容!</p>
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-header">
+				<a class="btn" href="#thr" data-bs-toggle="collapse">三</a>
+			</div>
+			<div id="thr" class="collapse" data-bs-parent="#accordion">
+				<div class="card-body">
+					<p>标题三的内容!</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<a href="" class="btn dropdown-toggle btn-primary" data-bs-toggle="dropdown">link</a>
+		<ul class="dropdown-menu">
+			<li class="dropdown-item">1</li>
+			<li class="dropdown-item">2</li>
+			<li class="dropdown-item">3</li>
+		</ul>
+		</button>
+	</div>
+
+
+
+	<div class="carousel slide mx-auto" data-bs-ride="carousel" id="demo" style="width: 30%;height: 400px;">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+			<button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
+		</div>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="img/CCCA4DAAA9513F0BD787B0A4B6BE41A9.jpg" class="d-block" style="height: 400px;width: 300px;">
+			</div>
+			<div class="carousel-item">
+				<img src="img/19A977B38FB20A122BCECEA5EB9E0C41.jpg" class="d-block" style="height: 400px;">
+			</div>
+			<div class="carousel-item">
+				<img src="img/C789C1A8BC9B88DE4541D1A92D788887.jpg" class="d-block" style="height: 400px;">
+			</div>
+			<div class="carousel-item">
+				<img src="img/DE5A7E5E12E042F5BB92A9D0D5534EAD.jpg" class="d-block" style="height: 400px;">
+			</div>
+			<div class="carousel-item">
+				<img src="img/49DFC79AB069D3B928D8A434C86DE592.jpg" class="d-block" style="height: 400px;">
+			</div>
+		</div>
+		<button type="button" class="carousel-control-prev" data-bs-target="#demo" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+		</button>
+		<button type="button" class="carousel-control-next" data-bs-target="#demo" data-bs-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</button>
+	</div>
+	
+
+</body> 
+
+</html>

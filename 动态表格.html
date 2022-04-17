@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table{
+        
+    }
+    thead td{
+        width: 100px;
+        height: 50px;
+        background: #808080;
+        text-align: center;
+    }
+    td{
+        width: 100px;
+        height: 50px;
+        background: #c34242;
+        text-align: center;
+    }
+    a{
+        color: black;
+        text-decoration: none;
+    }
+    tbody td:hover{
+        background-color: rgb(235, 101, 101);
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <td>姓名</td>
+            <td>技能</td>
+            <td>分数</td>
+            <td>操作</td>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+    <script>
+        var datas=[{
+            name:'炭治郎',
+            subject:'水之呼吸',
+            score:80
+        },{
+            name:'伊之助',
+            subject:'兽之呼吸',
+            score:100
+        },{
+            name:'我妻善逸',
+            subject:'雷之呼吸',
+            score:100
+        },{
+            name:'宇髄天元',
+            subject:'音之呼吸',
+            score:100
+        }];
+        var tbody=document.querySelector('tbody');
+        for (let i = 0; i < datas.length; i++) {
+            var tr=document.createElement('tr');
+            tbody.appendChild(tr);
+            for(var k in datas[i]){
+                var td=document.createElement('td');
+                td.innerHTML=datas[i][k];
+                tr.appendChild(td);
+            }
+            var td=document.createElement('td');
+            td.innerHTML='<a href="javascript:;">杀鬼</a>';
+            tr.appendChild(td);
+            
+        }
+        var a=document.querySelectorAll('a');
+                for (let i = 0; i <a.length; i++) {
+                    a[i].onclick=function(e){
+                        //tr.removeChild(this);
+                        console.log(e.target);
+                        console.log(e.type);
+                        tbody.removeChild(this.parentNode.parentNode) ;
+                    }//settimeout setinterval
+                }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <style>
+        div{
+            width: 200px;
+            height: 250px;
+            background-color: pink;
+            position: absolute;
+            left: 110px;
+            overflow: hidden;
+        }
+        div img{
+            width: 200px;
+            height: 250px;
+        }
+        button{
+            width: 100px;
+            height: 40px;
+        }
+        li{
+            width: 50px;
+            height: 25px;
+            list-style: none;
+            border: 1px solid black;
+            margin-top: 5px;
+            text-align: center;
+        }
+        ul{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div></div> -->
+    <!-- <button></button>
+    <button></button>
+    <button></button>
+    <button></button>
+    <button></button> -->
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <div>
+        <img src="img/19A977B38FB20A122BCECEA5EB9E0C41.jpg" alt="">
+        <img src="img/49DFC79AB069D3B928D8A434C86DE592.jpg" alt="">
+        <img src="img/C789C1A8BC9B88DE4541D1A92D788887.jpg" alt="">
+        <img src="img/CCCA4DAAA9513F0BD787B0A4B6BE41A9.jpg" alt="">
+        <img src="img/DE5A7E5E12E042F5BB92A9D0D5534EAD.jpg" alt="">
+    </div>
+    <script>
+        // $(function(){
+        //     $('div').hide();
+        // })
+        $('ul li').mouseover(function(){
+            var index=$(this).index();
+            $(this).css('background','pink');
+            $(this).siblings().css('background','');
+            $('img').eq(index).show();
+            $('img').eq(index).siblings().hide();
+        })
+        $('ul li').mouseout(function(){
+            $(this).css('background','');
+            //$(this).siblings().css('background','none');
+        })
+    </script>
+</body>
+</html>

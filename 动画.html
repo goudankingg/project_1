@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+    span{
+        color: aquamarine;
+        position: absolute;
+    }
+</style>
+<body>
+    <div></div>
+    <span>666</span>
+    <script>
+        var div=document.querySelector('div');
+        var span=document.querySelector('span');
+        function animate(obj,target,tim){
+            var step=(target-obj.offsetLeft)/300;
+            step=step>0?Math.ceil(step):Math.floor(step);
+            obj.time =setInterval(function(){
+            if(obj.offsetLeft<target){
+                obj.style.left=obj.offsetLeft+step+'px';
+                //var a=obj.style.left
+            }
+            else{
+                clearInterval(obj.time);
+                //div.style.left=a;
+                }
+            
+            },tim);
+            console.log(step);
+        }
+        animate(span,800,10);
+        animate(div,1200,10);
+    </script>
+</body>
+</html>

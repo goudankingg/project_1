@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img{
+        width: 200px;
+        height: 300px;
+    }
+</style>
+<body>
+    <img src="img/19A977B38FB20A122BCECEA5EB9E0C41.jpg" alt="">
+    
+    <div>
+        <ul>
+            
+        </ul>
+    </div>
+    <button>发送</button>
+
+    <script>
+        var a=document.querySelector('a');
+        var li=document.querySelectorAll('li');
+        var div=document.querySelector('div');
+        var ul=document.querySelector('ul');
+        var p=document.querySelector('p');
+        var pic=document.querySelector('img');
+        var i=0;
+        var time=null;
+        var btn=document.querySelector('button');
+        var alist=null;
+        btn.addEventListener('click',function(){
+            btn.disabled=true;
+            //var lili=document.createElement("a");
+            var time =setInterval(function(){
+                //alert('吴老七，八嘎呀路!');
+                if(i%8==1){
+                    clearInterval(time);
+                    //pic.style.display='none';
+                    //p.style.display='none';
+                    btn.disabled=false;
+                    //btn.innerHTML='发送';
+                    //i=0;
+                    
+                    //ul.removeChild(this.parentNode);
+                }else{
+                    var lili=document.createElement('li');
+                    ul.appendChild(lili);
+                    var ali=document.createElement('a');
+                    lili.appendChild(ali);
+                    var lis=document.querySelectorAll('li');
+                    var alist=document.querySelectorAll('a');
+                    alist[i].innerHTML='吴老'+i+'，八嘎呀路!';
+                    i++;
+                }
+            },1000); 
+        })
+        var alist=document.querySelectorAll('a');
+        for (let i = 0; i <alist.length; i++) {
+                    alist[i].onclick=function(){
+                        ul.removeChild(this.parentNode);
+                    }
+                }
+        //
+    </script>
+</body>
+</html>
